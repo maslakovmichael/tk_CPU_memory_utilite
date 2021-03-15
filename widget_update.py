@@ -1,4 +1,5 @@
-
+import psutil as pt
+import tkinter as tk
 
 
 # этот класс будет родителем класса utilite.py, поэтому некоторые обьекты, методи и переменные здесь будут из класса-наследника
@@ -16,16 +17,16 @@ class ConfigWidget:
         self.wheel = self.after(1000, self.config_cpu_bar) # создаем переменную wheel, в которой функция afret() для обновления данных раз в 1 секунду
 
     def configure_win(self): # функция для конфигурации окна - чтоб убирать или добавлять системную рамку
-        if self.wm_overrideredirect():
-            self.overrideredirect(False) # что то эта функция в tkinter не срабатывает
+        if self.wm_overrideredirect(): # если окно с рамкой, то...
+            self.overrideredirect(False) # убираем рамку (что то эта функция в tkinter не срабатывает)
         else:
-            self.overrideredirect(True)
+            self.overrideredirect(True) # иначе - добавляем рамку
         self.update() # обновление окна
 
 
     def config_minwin(self): # конфигурация мини-окна
         self.bar_one.configure(value=self.cpu.cpu_one_return()) # установка актуальных значений для cpu
-        self.ram_bar.configure(value=self.cpu.ram_usage([2])) # установка актуальных значений для ram
+        self.ram_bar.configure(value=self.cpu.ram_usage()[2]) # установка актуальных значений для ram
         self.wheel = self.after(1000, self.config_minwin) # создаем переменную wheel, в которой функция afret() для обновления данных раз в 1 секунду
 
     def clear_win(self):                #метод очистки виджетов
