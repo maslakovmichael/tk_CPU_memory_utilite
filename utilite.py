@@ -10,10 +10,10 @@ class Application(tk.Tk, ConfigWidget):
         self.resizable(False, False)      # запрет на измененин размеров окна
         self.title('Utilite monitor bar') # название утилиты в верху окна
         self.geometry('+10+30')           # отступ от угла экрана
-        self.update_idletasks()           # обновление окна
+        # self.update_idletasks()           # обновление окна
         self.attributes('-topmost', True) # окно всегда поверх друких окон
-        self.attributes('-alpha', 1)    # прозначность онка
-        self.update_idletasks()           # обновление окна
+        # self.attributes('-alpha', 0.9)    # прозначность онка
+        # self.update_idletasks()           # обновление окна
         self.overrideredirect(True)      # убрать системное окно с '_ <> X'
         self.iconphoto(True, tk.PhotoImage(file='icon_11.png')) # фото на иконку
 
@@ -88,7 +88,7 @@ class Application(tk.Tk, ConfigWidget):
 
     def leave_mouse(self, event):
         if self.combo_win.current() == 0: # если значение - нулевое из списка значений комбобокса
-            self.geometry(f'{self.winfo_width()}x222') # значит что ширина - текущая, а висоту выставить 1px
+            self.geometry(f'{self.winfo_width()}x2') # значит что ширина - текущая, а висоту выставить 1px
 
     def choise_combo(self, event):
         if self.combo_win.current()==2:
